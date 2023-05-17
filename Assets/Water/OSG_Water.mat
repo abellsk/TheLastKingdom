@@ -108,8 +108,8 @@ Material:
     - _EnvironmentReflections: 1
     - _Foam_Depth: -3.11
     - _Foam_Distance: -0.52
-    - _Foam_Strength: 0.05
-    - _Foam_Tile: 9.81
+    - _Foam_Strength: 0.13
+    - _Foam_Tile: 9.9
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -133,8 +133,8 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Deep_Water: {r: 0.30980393, g: 0.5019608, b: 0.48627454, a: 1}
-    - _Depth_Colour: {r: 0.3089623, g: 0.5, b: 0.4871417, a: 0.25490198}
+    - _Deep_Water: {r: 0, g: 0.6693388, b: 0.8018868, a: 1}
+    - _Depth_Colour: {r: 0, g: 0.67058825, b: 0.8000001, a: 0.25490198}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Shallow_Water: {r: 1, g: 1, b: 1, a: 0.65882355}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
