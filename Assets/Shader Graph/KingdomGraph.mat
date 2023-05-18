@@ -56,13 +56,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Layer1_Tile: 0.34
-    - _Layer2_Tile: -0.33
+    - _Layer1_Tile: -1.32
+    - _Layer2_Tile: -0.14
     - _Layer3_Tile: 0
     - _Normal_Strength: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Tile: 1.37
+    - _Tile: 27.85
     - _smoothness: 0
     m_Colors: []
   m_BuildTextureStacks: []
