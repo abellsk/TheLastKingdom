@@ -7,8 +7,12 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
 
     public float moveSpeed;
+    public float walkSpeed;
+    public float sprintSpeed;
 
     public float groundDrag;
+
+    [Header("Jumping")]
 
     public float jumpForce;
     public float jumpCooldown;
@@ -22,7 +26,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform orientation;
 
     [Header("Keybinds")]
-    public KeyCode jumpKey = KeyCode.Space; 
+    public KeyCode jumpKey = KeyCode.Space;
+    public KeyCode sprintKey = KeyCode.LeftShift;
 
 
 
@@ -32,6 +37,15 @@ public class PlayerMovement : MonoBehaviour
     Vector3 moveDirection;
 
     Rigidbody rb;
+
+    public MovementState state;
+
+    public enum MovementState
+    {
+        walking,
+        sprinting,
+        air
+    }
 
     private void Start()
     {
@@ -48,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatisGround);
 
         MyInput();
+        StateHandler();
 
         //handle drag
         if (grounded)
@@ -76,6 +91,28 @@ public class PlayerMovement : MonoBehaviour
 
             Invoke(nameof(ResetJump), jumpCooldown);
         }
+    }
+
+    private void StateHandler()
+    {
+        // Mode - Sprinting
+        if (grounded && Input.GetKey(sprintKey))
+        {
+            state = MovementState.sprinting;
+            moveSpeed = sprintSpeed;
+        }
+
+        else if (grounded)
+        {
+            state = MovementState.walking;
+            moveSpeed = walkSpeed;
+        }
+
+        else
+        {
+            state = MovementState.air;
+        }
+
     }
 
     private void MovePlayer()
