@@ -5,6 +5,12 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    //Health
+    public int maxEnemyHealth = 100;
+    public int currentEnemyHealth;
+
+    //public  enemyHealthBar;
+
     public NavMeshAgent agent;
 
     public Transform player;
@@ -30,6 +36,12 @@ public class EnemyAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();   
     }
 
+    private void Start()
+    {
+        currentEnemyHealth = maxEnemyHealth;
+        //enemyHealthBar.SetMaxHealth(currentEnemyHealth);
+    }
+
     private void Update()
     {
         //Check for sight and attack range
@@ -40,6 +52,8 @@ public class EnemyAI : MonoBehaviour
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         //if (playerInAttackRange && playerInSightRange) AttackPlayer();
     }
+
+
 
     private void Patroling()
     {
@@ -81,6 +95,27 @@ public class EnemyAI : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
+
+    void EnemyTakeDamage(int enemydamage)
+    {
+        currentEnemyHealth -= enemydamage;
+        //enemyHealthBar.SetHealth(currentEnemyHealth);
+       
+    }
+    
+  
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            EnemyTakeDamage(20);
+            Debug.Log(currentEnemyHealth);
+        }
+        
+    }
+
+
 
 
     //private void AttackPlayer()

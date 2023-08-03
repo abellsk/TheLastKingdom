@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     public HealthBar healthBar;
     public ManaBar manaBar;
 
+    public int damageAmount = 20;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,11 +55,13 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Enemy")
-        {
-            TakeDamage(20);
-            Debug.Log("Hit");
-        }
+        //if(collision.gameObject.tag == "Enemy")
+        //{
+            //TakeDamage(20);
+            //Debug.Log("Hit");
+        //}
+
+        
 
         if (collision.gameObject.tag == "Mana Orbs")
         {
@@ -96,4 +100,6 @@ public class Player : MonoBehaviour
 
         manaBar.SetMana(currentMana);
     }
+
+   
 }
