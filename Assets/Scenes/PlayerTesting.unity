@@ -2249,6 +2249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 214580553}
   - component: {fileID: 214580554}
+  - component: {fileID: 214580555}
   m_Layer: 5
   m_Name: Enemy Health Bar
   m_TagString: Untagged
@@ -2329,6 +2330,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &214580555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214580552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb49edd04ae8bfe4ba4faf3a677e9aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 214580554}
 --- !u!1 &216686501
 GameObject:
   m_ObjectHideFlags: 0
@@ -15158,7 +15172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxEnemyHealth: 100
   currentEnemyHealth: 100
-  enemyHealthBar: {fileID: 0}
+  enemyHealthBar: {fileID: 214580555}
   agent: {fileID: 1266606737}
   player: {fileID: 989591279}
   whatIsGround:

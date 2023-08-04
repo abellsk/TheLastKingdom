@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
     public int maxEnemyHealth = 100;
     public int currentEnemyHealth;
 
-    //public  enemyHealthBar;
+    public  EnemyHealthBar enemyHealthBar;
 
     public NavMeshAgent agent;
 
