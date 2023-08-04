@@ -99,7 +99,12 @@ public class EnemyAI : MonoBehaviour
     void EnemyTakeDamage(int enemydamage)
     {
         currentEnemyHealth -= enemydamage;
-        //enemyHealthBar.SetHealth(currentEnemyHealth);
+        enemyHealthBar.SetHealth(currentEnemyHealth);
+
+        if (currentEnemyHealth == 0)
+        {
+            Destroy(gameObject);
+        }
        
     }
     
@@ -111,6 +116,7 @@ public class EnemyAI : MonoBehaviour
         {
             EnemyTakeDamage(20);
             Debug.Log(currentEnemyHealth);
+            
         }
         
     }
