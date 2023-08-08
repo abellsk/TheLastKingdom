@@ -30,6 +30,10 @@ public class EnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    //Loot
+    public GameObject ManaOrbs;
+    public Transform transformMana;
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -104,8 +108,20 @@ public class EnemyAI : MonoBehaviour
         if (currentEnemyHealth == 0)
         {
             Destroy(gameObject);
+            ManaOrbDrop();
+            
+            
         }
+
        
+    }
+
+    void ManaOrbDrop()
+    {
+        Vector3 position = transform.position; //Enemy Position
+        GameObject manaorbs = Instantiate(ManaOrbs, position,Quaternion.identity);//Mana Orb Drop
+        ManaOrbs.SetActive(true);
+        Destroy(ManaOrbs, 5f);  
     }
     
   
