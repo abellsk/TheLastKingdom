@@ -53,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
 
     public MovementState state;
 
+    private Animator anim;
+
     public enum MovementState
     {
         walking,
@@ -69,6 +71,8 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
 
         startYScale = transform.localScale.y;
+
+        anim = GetComponentInChildren<Animator>();
     }
 
 
@@ -124,6 +128,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void Idle()
+    {
+        anim.SetFloat("Speed", 0);
+    }
+
     private void StateHandler()
     {
 
@@ -141,6 +150,7 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;
+            anim.SetFloat("Speed", 1f);
         }
 
         // Mode - Walking
@@ -148,6 +158,7 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.walking;
             moveSpeed = walkSpeed;
+            anim.SetFloat("Speed", 0.5f);
         }
 
         // Mode - Air

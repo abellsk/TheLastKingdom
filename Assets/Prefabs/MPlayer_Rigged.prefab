@@ -2006,7 +2006,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5121819868596533128}
   - component: {fileID: 6797810235488701040}
-  - component: {fileID: 4522180686057664732}
   m_Layer: 0
   m_Name: MPlayer_Rigged
   m_TagString: Untagged
@@ -2051,37 +2050,6 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
   damageAmount: 20
---- !u!114 &4522180686057664732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5503271906570906930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e65897c9b1dc4cb43b17cf7e270607e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 0
-  walkSpeed: 8
-  sprintSpeed: 10
-  groundDrag: 8
-  jumpForce: 9
-  jumpCooldown: 0.25
-  airMultiplier: 0
-  crouchSpeed: 0
-  crouchYScale: 0
-  playerHeight: 0
-  whatisGround:
-    serializedVersion: 2
-    m_Bits: 0
-  orientation: {fileID: 0}
-  maxSlopeAngle: 0
-  jumpKey: 32
-  sprintKey: 304
-  crouchKey: 306
-  state: 0
 --- !u!1 &5588517548310317147
 GameObject:
   m_ObjectHideFlags: 0
