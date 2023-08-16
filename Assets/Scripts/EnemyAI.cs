@@ -128,12 +128,12 @@ public class EnemyAI : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player")
-        {
-            EnemyTakeDamage(20);
-            Debug.Log(currentEnemyHealth);
+        //if(collision.gameObject.tag == "Player")
+        //{
+            //EnemyTakeDamage(20);
+            //Debug.Log(currentEnemyHealth);
             
-        }
+        //}
         
     }
 

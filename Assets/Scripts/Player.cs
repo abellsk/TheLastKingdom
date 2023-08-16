@@ -55,11 +55,11 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //if(collision.gameObject.tag == "Enemy")
-        //{
-            //TakeDamage(20);
-            //Debug.Log("Hit");
-        //}
+        if(collision.gameObject.tag == "Enemy")
+        {
+            TakeDamage(20);
+            Debug.Log("Hit");
+        }
 
         
 
