@@ -39,8 +39,6 @@ public class EnemyAI : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("Player").transform;
-        agent = GetComponent<NavMeshAgent>();  
         anim = GetComponentInChildren<Animator>();
     }
 
@@ -48,6 +46,9 @@ public class EnemyAI : MonoBehaviour
     {
         currentEnemyHealth = maxEnemyHealth;
         //enemyHealthBar.SetMaxHealth(currentEnemyHealth);
+        player = GameObject.Find("Player").transform;
+        agent = GetComponent<NavMeshAgent>();
+        
     }
 
     private void Update()
@@ -109,6 +110,7 @@ public class EnemyAI : MonoBehaviour
     private void AttackTarget()
     {
         anim.SetTrigger("Attack");
+        
     }
 
     private void OnDrawGizmosSelected()
