@@ -19,6 +19,13 @@ public class PlayerMovementMain : MonoBehaviour
 
     [SerializeField] private float jumpHeight;
 
+    float lastClickedTime = 0;
+    public static int noOfClicks = 0;
+    float MaxComboDelay = 1;
+    private float nextFireTime = 0f;
+    public float cooldownTime = 2f;
+
+
     //References
     private CharacterController controller;
     private Animator anim;
@@ -37,6 +44,40 @@ public class PlayerMovementMain : MonoBehaviour
         {
             anim.SetTrigger("Jump");
         }
+
+        if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit1"))
+        {
+            anim.SetBool("hit1", false);
+        }
+        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit2"))
+        {
+            anim.SetBool("hit2", false);
+            
+        }
+        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit3"))
+        {
+            anim.SetBool("hit3", false);
+            noOfClicks = 0;
+        }
+
+        if (Time.time - lastClickedTime > MaxComboDelay)
+        {
+            noOfClicks = 0;
+        }
+        if(Time.time > nextFireTime)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                OnClick();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            groundslam();
+        }
+
+
     }
 
     private void Move()
@@ -108,5 +149,36 @@ public class PlayerMovementMain : MonoBehaviour
     {
         velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         
+        
     }
+
+
+
+    void OnClick()
+    {
+        lastClickedTime = Time.time;
+        noOfClicks++;
+        if(noOfClicks == 1)
+        {
+            anim.SetBool("hit1", true);
+        }
+        noOfClicks = Mathf.Clamp(noOfClicks, 0, 3);
+
+        if(noOfClicks >= 2 && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit1"))
+        {
+            anim.SetBool("hit1", false);
+            anim.SetBool("hit2", true);
+        }
+        if (noOfClicks >= 3 && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit2"))
+        {
+            anim.SetBool("hit2", false);
+            anim.SetBool("hit3", true);
+        }
+    }
+
+    private void groundslam()
+    {
+        anim.SetTrigger("groundslam");
+    }
+    
 }
