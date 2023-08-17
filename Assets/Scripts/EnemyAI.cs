@@ -34,10 +34,14 @@ public class EnemyAI : MonoBehaviour
     public GameObject ManaOrbs;
     public Transform transformMana;
 
+    //Anim
+    private Animator anim;
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
-        agent = GetComponent<NavMeshAgent>();   
+        agent = GetComponent<NavMeshAgent>();  
+        anim = GetComponentInChildren<Animator>();
     }
 
     private void Start()
@@ -90,6 +94,21 @@ public class EnemyAI : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
+        anim.SetFloat("Speed", 1f, 0.3f, Time.deltaTime);
+
+        float distanceToTarget = Vector3.Distance(player.position, transform.position);
+        
+        if (distanceToTarget <= agent.stoppingDistance)
+        {
+            anim.SetFloat("Speed", 0f);
+            AttackTarget();
+        }
+
+    }
+
+    private void AttackTarget()
+    {
+        anim.SetTrigger("Attack");
     }
 
     private void OnDrawGizmosSelected()

@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
 
     public int damageAmount = 20;
 
+    private Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,8 @@ public class Player : MonoBehaviour
 
         currentMana = maxMana;
         manaBar.SetMaxMana(maxMana);
+
+        anim = GetComponentInChildren<Animator>();  
     }
 
     // Update is called once per frame
@@ -53,24 +57,32 @@ public class Player : MonoBehaviour
        
     }
 
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //if(collision.gameObject.tag == "Enemy")
+    //{
+    //TakeDamage(20);
+    //Debug.Log("Hit");
+    //}
+
+
+
+    //if (collision.gameObject.tag == "Mana Orbs")
+    //{
+    //RegenMana(20);
+    //Debug.Log("Mana");
+
+    //Destroy(collision.gameObject);
+    //}
+
+    //}
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Enemy")
         {
-            TakeDamage(20);
-            Debug.Log("Hit");
+            Debug.Log("hit");
         }
-
-        
-
-        if (collision.gameObject.tag == "Mana Orbs")
-        {
-            RegenMana(20);
-            Debug.Log("Mana");
-
-            Destroy(collision.gameObject);
-        }
-
     }
 
     void TakeDamage(int damage)
@@ -78,12 +90,28 @@ public class Player : MonoBehaviour
         currentHealth -= damage;
 
         healthBar.SetHealth(currentHealth);
+
+        if(currentHealth <= 0)
+        {
+            Death();
+            
+        }
     }
 
     void Regen(int health)
     {
         currentHealth += health;
         healthBar.SetHealth(currentHealth);
+
+    }
+
+    private void Death()
+    {
+        Debug.Log("Dead");
+        anim.SetTrigger("isDead");
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
     }
 
